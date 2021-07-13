@@ -1,5 +1,31 @@
 import os
 
+def socket_close_rule():
+    import socket
+    s = socket.socket(
+        socket.AF_INET, socket.SOCK_STREAM)
+    s.bind(('', 9000))
+    s.listen(5)
+    while True:
+        c, addr = s.accept()
+        print('Got connection from', addr)
+        c.send(b'Thank you for connecting')
+        c.close()
+
+def redundant_Get_Method_Call():
+    dict = {"A":1, "B":2}
+    val = dict.get("C", None)
+    return val
+
+def dict_Get_Default_Value():
+    car = {
+        "brand": "bmw",
+        "model": "X5",
+        "year": "2021"
+    }
+    x = car.get("model")
+    return x
+
 
 def inline_negation_rule():
     if not a is b:
