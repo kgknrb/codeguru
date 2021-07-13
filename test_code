@@ -1,6 +1,30 @@
 import os
 
 
+def inline_negation_rule():
+    if not a is b:
+        print(a)
+#guru:v1:internal:pythonbestpractices:exit_class_method_re_raise_exception:1.0
+class Exit_class_method_re_raise_exception:
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        a = 1
+        b = 2
+        raise
+#pythonbestpractices:prefer_secrets_for_prng_for_cryptography_rule
+def prefer_secrets_for_prng_for_cryptography_rule():
+    # hashlib.md5.update
+    # random.choice
+    import random
+    import hashlib
+    complex_str = "abcdefghijklmnopqrstuvwkyz123456789!@#$%^&*()"
+    salt = random.choice(complex_str).encode()
+    hash_str = hashlib.md5()
+    hash_str.update(salt)
+
+
 def avoid_complex_comprehension_non_compliant_1():
     text = [['bar', 'foo', 'fooba'], ['Rome', 'Madrid', 'Houston'], ['aa', 'bb', 'cc', 'dd']]
     text_3 = [y.upper() for x in text if len(x) == 3 for y in x if y.startswith('f')]
